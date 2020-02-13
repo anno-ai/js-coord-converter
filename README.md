@@ -1,15 +1,19 @@
 # js-coord-converter
 
 # Usage
-Helper functions that can be used to convert min-max coordinates to corner coordinates, and vice versa.
+Helper functions that can be used to convert xMin, xMax, yMin, yMax coordinates to top, left, width, height coordinates, and vice versa.
+
 ```
 const xMin = 1
 const xMax = 10
-const yMin = 2
-const yMax = 12
+const yMin = 1
+const yMax = 10
 
-const coords = minMaxToCornerFormat(xMin, xMax, yMin, yMax)
+var coords = minMaxToCornerFormat(xMin, xMax, yMin, yMax)
 console.log(coords)
-// -> {left, top, width, height}
+// {top: 1, left: 1, width: 9, height: 9}
 
+coords = cornerFormatToMinMax(coords.top, coords.left, coords.width, coords.height)
+console.log(coords)
+// {xMin: 1, yMin: 1, xMax: 10, yMax: 10}
 ```
