@@ -1,6 +1,6 @@
 {
   "name": "@annoai/js-coord-converter",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Helper functions to convert min- max coordinates to corner coordinates and vice versa",
   "main": "index.js",
   "scripts": {
