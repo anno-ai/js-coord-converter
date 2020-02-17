@@ -15,6 +15,16 @@ module.exports = {
         xMax: left + width,
         yMax: top + height
       }
+    },
+    pointsToCornerFormat: function (points) {
+      const left = min(points.map((point) => point.x))
+      const top = min(points.map((point) => point.y))
+      return {
+        left: Math.round(left),
+        top: Math.round(top),
+        width: Math.round(max(points.map((point) => point.x)) - left),
+        height: Math.round(max(points.map((point) => point.y)) - top)
+      }
     }
   }
   
