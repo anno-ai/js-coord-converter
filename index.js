@@ -1,3 +1,4 @@
+const min = require('lodash/min')
 
 module.exports = {
     minMaxToCornerFormat: function (xMin, xMax, yMin, yMax) {
@@ -8,7 +9,7 @@ module.exports = {
         height: Math.round((yMax - yMin))
       }
     },
-    cornerFormatToMinMax: function (left, top, width, height) {
+    cornerToMinMaxFormat: function (left, top, width, height) {
       return {
         xMin: left,
         yMin: top,
