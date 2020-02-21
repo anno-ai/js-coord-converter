@@ -18,7 +18,26 @@ module.exports = {
         yMax: top + height
       }
     },
-    pointsToCornerFormat: function (points) {
+
+    /**
+     * [ 
+     *   {x: 0, y, 0}, 
+     *   {x: 0, y, 0}, 
+     *   {x: 0, y, 0}, 
+     *   {x: 0, y, 0}... 
+     * ]
+     * 
+     * To
+     * 
+     * {
+     *   left: 0,
+     *   top: 0, 
+     *   width: 0,
+     *   height: 0
+     * }
+     * @return  {object}
+     */
+    pointsToCornerFormat: function (points = []) {
       const left = min(points.map((point) => point.x))
       const top = min(points.map((point) => point.y))
       return {
@@ -27,6 +46,29 @@ module.exports = {
         width: Math.round(max(points.map((point) => point.x)) - left),
         height: Math.round(max(points.map((point) => point.y)) - top)
       }
+    },
+
+    /**
+     * [ 
+     *   {x: 0, y, 0}, 
+     *   {x: 0, y, 0}, 
+     *   {x: 0, y, 0}, 
+     *   {x: 0, y, 0}... 
+     * ]
+     * 
+     * To
+     * 
+     * {
+     *   xMin: 0,
+     *   xMax: 0, 
+     *   yMin: 0,
+     *   yMax: 0
+     * }
+     * @return  {object}
+     */
+    pointsToMinMaxFormat: function (points = []) {
+      const { left, top, width, height } = module.exports.pointsToCornerFormat(points)
+      return module.exports.cornerToMinMaxFormat(left, top, width, height )
     }
   }
   
