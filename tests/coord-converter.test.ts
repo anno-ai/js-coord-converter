@@ -1,4 +1,5 @@
-import { minMaxToCornerFormat, cornerToMinMaxFormat, pointsToCornerFormat, pointsToMinMaxFormat } from '../lib'
+export {}
+const { minMaxToCornerFormat, cornerToMinMaxFormat, pointsToCornerFormat, pointsToMinMaxFormat } = require ('../lib')
 const chai = require('chai')
 const assert = chai.assert
 
