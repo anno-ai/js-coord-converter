@@ -1,23 +1,23 @@
-const min = require('lodash/min')
-const max = require('lodash/max')
+import min = require('lodash/min')
+import max = require('lodash/max')
 
-module.exports = {
-    minMaxToCornerFormat: function (xMin, xMax, yMin, yMax) {
-      return {
+export function minMaxToCornerFormat (xMin: number, xMax: number, yMin: number, yMax: number) {
+    return {
         left: Math.round(xMin),
         top: Math.round(yMin),
         width: Math.round((xMax - xMin)),
         height: Math.round((yMax - yMin))
       }
-    },
-    cornerToMinMaxFormat: function (left, top, width, height) {
-      return {
+    }
+
+export function cornerToMinMaxFormat (left: number, top: number, width: number, height: number) {
+    return {
         xMin: left,
         yMin: top,
         xMax: left + width,
         yMax: top + height
-      }
-    },
+    }
+}
 
     /**
      * [ 
@@ -37,7 +37,7 @@ module.exports = {
      * }
      * @return  {object}
      */
-    pointsToCornerFormat: function (points = []) {
+export function pointsToCornerFormat (points: any) {
       const left = min(points.map((point) => point.x))
       const top = min(points.map((point) => point.y))
       return {
@@ -46,7 +46,7 @@ module.exports = {
         width: Math.round(max(points.map((point) => point.x)) - left),
         height: Math.round(max(points.map((point) => point.y)) - top)
       }
-    },
+    }
 
     /**
      * [ 
@@ -66,9 +66,9 @@ module.exports = {
      * }
      * @return  {object}
      */
-    pointsToMinMaxFormat: function (points = []) {
+export function pointsToMinMaxFormat (points = []) {
       const { left, top, width, height } = module.exports.pointsToCornerFormat(points)
       return module.exports.cornerToMinMaxFormat(left, top, width, height )
     }
-  }
+
   

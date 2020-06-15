@@ -17,6 +17,9 @@
   },
   "homepage": "https://github.com/anno-ai/js-coord-converter#readme",
   "dependencies": {
+    "@types/jest": "^26.0.0",
+    "@types/lodash": "^4.14.155",
+    "@types/node": "^14.0.13",
     "lodash": "^4.17.15"
   }
 }
