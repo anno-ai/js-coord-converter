@@ -1,6 +1,4 @@
 import { minMaxToCornerFormat, cornerToMinMaxFormat, pointsToCornerFormat, pointsToMinMaxFormat } from '../lib'
-// import { isMainThread } from 'worker_threads'
-// import { isNumber } from 'util'
 const chai = require('chai')
 const assert = chai.assert
 
@@ -30,9 +28,8 @@ describe ('coord-converter: pointsToCornerFormat', () => {
 
 describe ('coord-converter: pointsToMinMaxFormat', () => {
     it('should verify xMin, XMax, yMin, yMax from points given', async () => {
-        const coords3 = await pointsToMinMaxFormat([{x: 0, y:2}])
+        const coords3 = await pointsToMinMaxFormat([{x: 1, y:2}])
         assert(coords3)
         console.log(coords3)
-
     })
 })
