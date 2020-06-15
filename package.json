@@ -2,9 +2,17 @@
   "name": "@annoai/js-coord-converter",
   "version": "1.0.5",
   "description": "Helper functions to convert min- max coordinates to corner coordinates and vice versa",
-  "main": "index.js",
+  "main": "lib/index.ts",
+  "directories": {
+    "lib": "lib",
+    "test": "tests"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "build-npm": "npm ci && npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "standardx --verbose | snazzy",
+    "lint:fix": "standardx --fix --verbose | snazzy"
   },
   "repository": {
     "type": "git",
@@ -17,6 +25,72 @@
   },
   "homepage": "https://github.com/anno-ai/js-coord-converter#readme",
   "dependencies": {
-    "lodash": "^4.17.15"
+    "@types/lodash": "^4.14.155",
+    "@types/node": "^14.0.13",
+    "@types/mocha": "^7.0.2",
+    "lodash": "^4.17.15",
+    "typescript": "^3.9.5"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.2.11",
+    "@types/jest": "^25.2.3",
+    "@typescript-eslint/eslint-plugin": "^2.31.0",
+    "@typescript-eslint/parser": "^2.31.0",
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "chai-fs": "^2.0.0",
+    "chai-string": "^1.5.0",
+    "lint-staged": "^8.2.1",
+    "standardx": "^5.0.0",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.8.3"
+  },
+  "eslintConfig": {
+    "rules": {
+      "no-unused-vars": "off",
+      "@typescript-eslint/no-unused-vars": "error",
+      "lodash/import-scope": "off"
+    }
+  },
+  "standardx": {
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+      "@typescript-eslint/eslint-plugin"
+    ],
+    "ignore": [
+      "cypress/integration/examples/**/*.spec.js",
+      "client/vendor/@fuse/**/*.js",
+      "backups/**/*.js"
+    ],
+    "global": [
+      "_",
+      "after",
+      "afterEach",
+      "requireApi",
+      "requireRoot",
+      "assert",
+      "before",
+      "beforeEach",
+      "Blob",
+      "context",
+      "cy",
+      "Cypress",
+      "describe",
+      "env",
+      "expect",
+      "it",
+      "sails"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
   }
 }
