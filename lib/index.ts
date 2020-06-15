@@ -6,7 +6,7 @@ export function minMaxToCornerFormat (xMin: number, xMax: number, yMin: number, 
         left: Math.round(xMin),
         top: Math.round(yMin),
         width: Math.round((xMax - xMin)),
-        height: Math.round((yMax - yMin))
+        height: Math.round((yMax - yMin)),
       }
     }
 
@@ -35,16 +35,24 @@ export function cornerToMinMaxFormat (left: number, top: number, width: number, 
      *   width: 0,
      *   height: 0
      * }
-     * @return  {object}
+     * @return {object}
      */
-export function pointsToCornerFormat (points: any) {
-      const left = min(points.map((point) => point.x))
-      const top = min(points.map((point) => point.y))
+
+    type Point = {
+        x: any;
+        y: any
+    }
+
+export function pointsToCornerFormat (points: [Point]) {
+      const left: any = min(points.map((point: any) => point.x))
+      const top: any = min(points.map((point: any) => point.y))
+      const width: any = (max(points.map((point: any) => point.x)) - left)
+      const height: any = (max(points.map((point: any) => point.y)) - top)
       return {
-        left: Math.round(left),
-        top: Math.round(top),
-        width: Math.round(max(points.map((point) => point.x)) - left),
-        height: Math.round(max(points.map((point) => point.y)) - top)
+        left: Math.max(0, Math.round(left)),
+        top: Math.max(0, Math.round(top)),
+        width: Math.max(0, Math.round(width)),
+        height: Math.max(0, Math.round(height))
       }
     }
 
@@ -66,9 +74,9 @@ export function pointsToCornerFormat (points: any) {
      * }
      * @return  {object}
      */
-export function pointsToMinMaxFormat (points = []) {
-      const { left, top, width, height } = module.exports.pointsToCornerFormat(points)
-      return module.exports.cornerToMinMaxFormat(left, top, width, height )
+export function pointsToMinMaxFormat (points: [Point]) {
+      const { left, top, width, height } =  pointsToCornerFormat(points)
+      return module.exports.cornerToMinMaxFormat(left, top, width, height)
     }
 
   
