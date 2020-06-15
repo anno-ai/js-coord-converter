@@ -1,7 +1,7 @@
 import min = require('lodash/min')
 import max = require('lodash/max')
 
-export function minMaxToCornerFormat (xMin: number, xMax: number, yMin: number, yMax: number) {
+export async function minMaxToCornerFormat (xMin: number, xMax: number, yMin: number, yMax: number) {
     return {
         left: Math.round(xMin),
         top: Math.round(yMin),
@@ -10,7 +10,7 @@ export function minMaxToCornerFormat (xMin: number, xMax: number, yMin: number, 
       }
     }
 
-export function cornerToMinMaxFormat (left: number, top: number, width: number, height: number) {
+export async function cornerToMinMaxFormat (left: number, top: number, width: number, height: number) {
     return {
         xMin: left,
         yMin: top,
