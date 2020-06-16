@@ -1,21 +1,20 @@
-import min = require('lodash/min')
-import max = require('lodash/max')
+import { min, max } from 'lodash'
 
-export async function minMaxToCornerFormat (xMin: number, xMax: number, yMin: number, yMax: number) {
+export function minMaxToCornerFormat (xMin: number, xMax: number, yMin: number, yMax: number) {
   return {
-    left: Math.round(xMin),
-    top: Math.round(yMin),
-    width: Math.round((xMax - xMin)),
-    height: Math.round((yMax - yMin))
+    left: Math.max(0, Math.round(xMin)),
+    top: Math.max(0, Math.round(yMin)),
+    width: Math.max(0, Math.round((xMax - xMin))),
+    height: Math.max(0, Math.round((yMax - yMin)))
   }
 }
 
-export async function cornerToMinMaxFormat (left: number, top: number, width: number, height: number) {
+export function cornerToMinMaxFormat (left: number, top: number, width: number, height: number) {
   return {
-    xMin: left,
-    yMin: top,
-    xMax: left + width,
-    yMax: top + height
+    xMin: Math.max(0, Math.round(left)),
+    yMin: Math.max(0, Math.round(top)),
+    xMax: Math.max(0, Math.round(left + width)),
+    yMax: Math.max(0, Math.round(top + height))
   }
 }
 
@@ -37,15 +36,17 @@ export async function cornerToMinMaxFormat (left: number, top: number, width: nu
      * }
      * @return {object}
      */
-
     type Point = {
         x: any;
         y: any
     }
+    // type Points = {
+    //   [key: number]: Point;
+    // }
 
-export function pointsToCornerFormat (points: [Point]) {
-  const left: any = min(points.map((point: any) => point.x))
-  const top: any = min(points.map((point: any) => point.y))
+export function pointsToCornerFormat (points: Point[]) {
+  const left: any = Math.max(0, min(points.map((point: any) => point.x)))
+  const top: any = Math.max(0, min(points.map((point: any) => point.y)))
   const width: any = (max(points.map((point: any) => point.x)) - left)
   const height: any = (max(points.map((point: any) => point.y)) - top)
   return {
@@ -74,7 +75,7 @@ export function pointsToCornerFormat (points: [Point]) {
      * }
      * @return  {object}
      */
-export function pointsToMinMaxFormat (points: [Point]) {
+export function pointsToMinMaxFormat (points: Point[]) {
   const { left, top, width, height } = pointsToCornerFormat(points)
   return module.exports.cornerToMinMaxFormat(left, top, width, height)
 }
