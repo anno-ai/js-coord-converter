@@ -1,5 +1,4 @@
-const min = require('lodash/min')
-const max = require('lodash/max')
+import { min, max } from 'lodash'
 
 export function minMaxToCornerFormat (xMin: number, xMax: number, yMin: number, yMax: number) {
   return {
