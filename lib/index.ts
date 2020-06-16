@@ -51,5 +51,5 @@ export function pointsToCornerFormat (points: Point[]) {
   */
 export function pointsToMinMaxFormat (points: Point[]) {
   const { left, top, width, height } = pointsToCornerFormat(points)
-  return module.exports.cornerToMinMaxFormat(left, top, width, height)
+  return cornerToMinMaxFormat(left, top, width, height)
 }
