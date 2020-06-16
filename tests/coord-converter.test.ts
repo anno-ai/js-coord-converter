@@ -10,7 +10,6 @@ describe('coord-converter: minMaxToCornerFormat', () => {
     assert.equal(coords0.top, 5)
     assert.equal(coords0.width, 9)
     assert.equal(coords0.height, 5)
-    console.log(coords0)
   })
 })
 
@@ -21,7 +20,6 @@ describe('coord-converter: cornerToMinMaxFormat', () => {
     assert.equal(coords1.xMax, 5)
     assert.equal(coords1.yMin, 10)
     assert.equal(coords1.yMax, 20)
-    console.log(coords1)
   })
 })
 
@@ -32,7 +30,6 @@ describe('coord-converter: pointsToCornerFormat', () => {
     assert.equal(coords2.top, 0)
     assert.equal(coords2.width, 3)
     assert.equal(coords2.height, 10)
-    console.log(coords2)
   })
 })
 
@@ -43,6 +40,5 @@ describe('coord-converter: pointsToMinMaxFormat', () => {
     assert.equal(coords3.xMax, 5)
     assert.equal(coords3.yMin, 0)
     assert.equal(coords3.yMax, 5)
-    console.log(coords3)
   })
 })
