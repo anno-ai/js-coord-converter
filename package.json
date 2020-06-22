@@ -1,8 +1,8 @@
 {
   "name": "@annoai/js-coord-converter",
-  "version": "1.0.5",
+  "version": "1.0.11",
   "description": "Helper functions to convert min- max coordinates to corner coordinates and vice versa",
-  "main": "lib/index.ts",
+  "main": "dist/lib/index.js",
   "directories": {
     "lib": "lib",
     "test": "tests"
@@ -27,7 +27,6 @@
   "dependencies": {
     "@types/lodash": "^4.14.155",
     "@types/node": "^14.0.13",
-    "@types/mocha": "^7.0.2",
     "lodash": "^4.17.15",
     "typescript": "^3.9.5"
   },
