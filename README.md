@@ -16,4 +16,5 @@ console.log(coords)
 coords = cornerFormatToMinMax(coords.top, coords.left, coords.width, coords.height)
 console.log(coords)
 // {xMin: 1, yMin: 1, xMax: 10, yMax: 10}
+
 ```
