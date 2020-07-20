@@ -9,8 +9,6 @@
   },
   "scripts": {
     "build": "tsc",
-    "build-npm": "npm ci && npm run build",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "test:unit": "mocha --config .mocharc.json",
     "lint": "standardx --verbose | snazzy",
     "lint:fix": "standardx --fix --verbose | snazzy"
@@ -19,7 +17,6 @@
     "type": "git",
     "url": "git+https://github.com/anno-ai/js-coord-converter.git"
   },
-  "author": "Andy Hayes",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/anno-ai/js-coord-converter/issues"
