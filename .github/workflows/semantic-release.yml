@@ -22,8 +22,15 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     
+    - name: Setup npmrc
+      run: echo "" >> .npmrc && echo "//registry.npmjs.org/:_authToken=${{secrets.NPM_TOKEN}}" >> .npmrc
+      
     - run: npm ci
-    
+      env:
+        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
     - run: npm run build --if-present
     
     - run: npm run test:unit
@@ -36,6 +43,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         
     - name: Do something when a new release published
       if: steps.semantic.outputs.new_release_published == 'true'

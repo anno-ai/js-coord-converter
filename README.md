@@ -1,3 +1,5 @@
+![Node.js Unit Tests](https://github.com/anno-ai/js-coord-converter/workflows/Node.js%20Unit%20Tests/badge.svg?branch=devel)
+
 # js-coord-converter
 
 # Usage
