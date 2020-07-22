@@ -65,7 +65,15 @@
     "plugins": [
       "@typescript-eslint/eslint-plugin"
     ],
-    "ignore": [ ],
-    "global": [ ]
+    "global": [
+      "after",
+      "afterEach",
+      "assert",
+      "before",
+      "beforeEach",
+      "describe",
+      "expect",
+      "it"
+    ]
   }
 }
